@@ -264,7 +264,7 @@ python Learing.py
 
 如有問題或建議，請透過以下方式聯絡：
 - 專案 Issues: [GitHub Issues](https://github.com/username/repo/issues)
-- 電子郵件: your.email@example.com
+- 電子郵件: andy30326mango@gmail.com
 
 ## 🙏 致謝
 
