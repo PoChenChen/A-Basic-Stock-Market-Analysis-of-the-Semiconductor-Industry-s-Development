@@ -1,0 +1,88 @@
+<!-- templates/company_list.html -->
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>公司列表</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'company_list' %}">公司列表</a>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    {% if industry %}
+                        <a class="nav-link" href="{% url 'industry_detail' industry.id %}">產業公司列表</a>
+                    {% else %}
+                        <a class="nav-link disabled" href="#">產業公司列表</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    {% if company %}
+                    <a class="nav-link" href="{% url 'company_detail' company.id %}">{{ company.name }} 詳細資訊</a>
+                    {% else %}
+                    <a class="nav-link disabled" href="#">詳細資訊</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<body>
+<form method="get" class="mb-3 d-flex flex-wrap align-items-center gap-2">
+    <br></br>
+    <input type="text" name="q" class="form-control" placeholder="搜尋公司或代號" value="{{ query }}">
+    <select name="industry" class="form-control">
+    <option value="">全部產業</option>
+    {% for industry in industries %}
+        <option value="{{ industry.id }}" {% if industry.id == industry_filter %}selected{% endif %}>
+        {{ industry.name }}
+        </option>
+    {% endfor %}
+    </select>
+
+    <select name="year" class="form-control">
+        {% for y in years %}
+            <option value="{{ y }}" {% if y == year_filter %}selected{% endif %}>{{ y }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit" class="btn btn-primary">搜尋</button>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>公司名稱</th>
+            <th>股票代號</th>
+            <th>產業</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for company in page_obj %}
+        <tr>
+            <td><a href="{% url 'company_detail' company.id %}">{{ company.name }}</a></td>
+            <td>{{ company.symbol }}</td>
+            <td><a href="{% url 'industry_detail' company.industry.id %}">{{ company.industry.name }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<nav>
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&q={{ query }}&industry={{ industry_filter }}&year={{ year_filter }}">上一頁</a></li>
+    {% endif %}
+
+    <li class="page-item disabled"><a class="page-link">第 {{ page_obj.number }} 頁</a></li>
+
+    {% if page_obj.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}&q={{ query }}&industry={{ industry_filter }}&year={{ year_filter }}">下一頁</a></li>
+    {% endif %}
+  </ul>
+</nav>
+</body>
+</html>

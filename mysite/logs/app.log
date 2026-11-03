@@ -1,0 +1,122 @@
+# Django æ‡‰ç”¨æ—¥èªŒæ–‡ä»¶
+# å‰µå»ºæ™‚é–“: 2025-01-27
+# ç”¨é€”: è¨˜éŒ„ Django æ‡‰ç”¨ç¨‹å¼çš„é‹è¡Œæ—¥èªŒ
+
+[2025-01-27 10:00:00] INFO - Django æ‡‰ç”¨ç¨‹å¼å•Ÿå‹•
+[2025-01-27 10:00:00] INFO - æ—¥èªŒç³»çµ±åˆå§‹åŒ–å®Œæˆ
+[2025-01-27 10:00:00] INFO - éœæ…‹æ–‡ä»¶é…ç½®å®Œæˆ
+[2025-01-27 10:00:00] INFO - è³‡æ–™åº«é€£æ¥æ­£å¸¸
+INFO 2025-08-11 16:29:16,006 autoreload 15444 2708 Watching for file changes with StatReloader
+INFO 2025-08-11 16:29:19,596 basehttp 15444 26676 "GET / HTTP/1.1" 200 2975
+INFO 2025-08-11 16:29:25,449 basehttp 15444 26676 "GET /industries/1/ HTTP/1.1" 200 5215
+INFO 2025-08-11 16:29:27,982 basehttp 15444 26676 "GET /companies/ HTTP/1.1" 200 5990
+ERROR 2025-08-11 16:29:30,318 log 15444 26676 Internal Server Error: /companies/
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\final\mysite\webapp\views.py", line 87, in company_list
+    companies = companies.filter(year=year_filter)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\sql\query.py", line 1416, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\sql\query.py", line 1438, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\sql\query.py", line 1370, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\sql\query.py", line 1216, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\lookups.py", line 77, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'year' expected a number but got 'None'.
+ERROR 2025-08-11 16:29:30,326 basehttp 15444 26676 "GET /companies/?page=2&q=&industry=None&year=None HTTP/1.1" 500 127435
+INFO 2025-08-11 16:29:32,998 basehttp 15444 26676 "GET /companies/ HTTP/1.1" 200 5990
+ERROR 2025-08-11 16:29:33,834 log 15444 26676 Internal Server Error: /companies/
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'None'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "D:\final\mysite\webapp\views.py", line 87, in company_list
+    companies = companies.filter(year=year_filter)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\sql\query.py", line 1416, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\sql\query.py", line 1438, in _add_q
+    split_subq=split_subq, check_filterable=check_filterable,
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\sql\query.py", line 1370, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\sql\query.py", line 1216, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\lookups.py", line 77, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "C:\ProgramData\Anaconda3\lib\site-packages\django\db\models\fields\__init__.py", line 1827, in get_prep_value
+    ) from e
+ValueError: Field 'year' expected a number but got 'None'.
+ERROR 2025-08-11 16:29:33,836 basehttp 15444 26676 "GET /companies/?page=2&q=&industry=None&year=None HTTP/1.1" 500 127435
+INFO 2025-08-11 16:29:40,204 basehttp 15444 26676 "GET /companies/?q=&industry=1&year=2023 HTTP/1.1" 200 5294
+INFO 2025-08-11 16:29:42,746 basehttp 15444 26676 "GET /companies/?q=&industry=2&year=2023 HTTP/1.1" 200 4992
+INFO 2025-08-11 16:29:45,062 basehttp 15444 26676 "GET /companies/?q=&industry=3&year=2023 HTTP/1.1" 200 5170
+INFO 2025-08-11 16:29:47,048 basehttp 15444 26676 "GET /companies/?q=&industry=4&year=2023 HTTP/1.1" 200 2198
+INFO 2025-08-11 16:29:49,508 basehttp 15444 26676 "GET /companies/?q=&industry=5&year=2023 HTTP/1.1" 200 3472
+INFO 2025-08-11 16:29:52,416 views 15444 26676 ï¿½dï¿½İ¤ï¿½ï¿½qï¿½Ô²Ó¸ï¿½T: ï¿½Tï¿½P (Samsung)
+WARNING 2025-08-11 16:29:53,009 views 15444 26676 ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Tï¿½P ï¿½ï¿½ï¿½Ñ»ï¿½ï¿½Æ¾ï¿½
+INFO 2025-08-11 16:29:53,013 basehttp 15444 26676 "GET /companies/49/ HTTP/1.1" 200 1908
+WARNING 2025-08-11 16:29:53,035 basehttp 15444 26676 "GET /static/kline_output/%E4%B8%89%E6%98%9F_Samsung_kline.png HTTP/1.1" 404 1882
+INFO 2025-08-11 16:29:59,941 basehttp 15444 7800 "GET /companies/ HTTP/1.1" 200 5990
+INFO 2025-08-11 16:30:03,062 basehttp 15444 7800 "GET /companies/?q=&industry=&year=2023 HTTP/1.1" 200 5990
+INFO 2025-08-11 16:30:06,713 basehttp 15444 7800 "GET /companies/ HTTP/1.1" 200 5990
+INFO 2025-08-11 16:30:09,763 basehttp 15444 7800 "GET /industries/2/ HTTP/1.1" 200 4847
+INFO 2025-08-16 14:48:26,964 autoreload 9168 3720 Watching for file changes with StatReloader
+INFO 2025-08-16 14:48:30,841 basehttp 9168 24304 "GET / HTTP/1.1" 200 2975
+INFO 2025-08-16 14:48:30,866 basehttp 9168 24304 "GET /static/semiconductor-wafer.jpg HTTP/1.1" 200 212358
+WARNING 2025-08-16 14:48:31,209 log 9168 24304 Not Found: /favicon.ico
+WARNING 2025-08-16 14:48:31,210 basehttp 9168 24304 "GET /favicon.ico HTTP/1.1" 404 2653
+INFO 2025-08-16 14:49:58,584 basehttp 9168 24304 "GET /industries/1/ HTTP/1.1" 200 5215
+INFO 2025-08-16 14:52:33,620 basehttp 9168 29668 "GET /industries/1/ HTTP/1.1" 200 5215
+INFO 2025-08-16 14:52:34,979 basehttp 9168 29668 "GET /companies/ HTTP/1.1" 200 5990
+INFO 2025-08-16 14:52:37,010 views 9168 29668 ¬d¬İ¤½¥q¸Ô²Ó¸ê°T: ¤é¤ë¥ú (ASE) (2311)
+WARNING 2025-08-16 14:52:37,455 views 9168 29668 ¥¼§ä¨ì ¤é¤ë¥ú (ASE) ªºªÑ»ù¼Æ¾Ú
+INFO 2025-08-16 14:52:37,475 basehttp 9168 29668 "GET /companies/1/ HTTP/1.1" 200 1957
+WARNING 2025-08-16 14:52:37,502 basehttp 9168 29668 "GET /static/kline_output/%E6%97%A5%E6%9C%88%E5%85%89%20(ASE)_2311_kline.png HTTP/1.1" 404 1908
+INFO 2025-08-16 14:52:39,820 basehttp 9168 2644 "GET /companies/ HTTP/1.1" 200 5990
+INFO 2025-08-16 14:52:41,071 views 9168 2644 ¬d¬İ¤½¥q¸Ô²Ó¸ê°T: ¤é¤ë¥ú (ASE) (2311)
+WARNING 2025-08-16 14:52:41,187 views 9168 2644 ¥¼§ä¨ì ¤é¤ë¥ú (ASE) ªºªÑ»ù¼Æ¾Ú
+INFO 2025-08-16 14:52:41,193 basehttp 9168 2644 "GET /companies/1/ HTTP/1.1" 200 1957
+WARNING 2025-08-16 14:52:41,210 basehttp 9168 2644 "GET /static/kline_output/%E6%97%A5%E6%9C%88%E5%85%89%20(ASE)_2311_kline.png HTTP/1.1" 404 1908
+INFO 2025-08-16 14:52:44,033 basehttp 9168 28764 "GET /companies/ HTTP/1.1" 200 5990
+INFO 2025-08-16 14:52:45,433 views 9168 28764 ¬d¬İ¤½¥q¸Ô²Ó¸ê°T: Ápµo¬ì (2454)
+INFO 2025-08-16 14:52:45,460 views 9168 28764 ¦¨¥\Åª¨ú Ápµo¬ì ªº 2024 ¦~ªÑ»ù¼Æ¾Ú¡A¦@ 5 µ§
+INFO 2025-08-16 14:52:45,468 basehttp 9168 28764 "GET /companies/16/ HTTP/1.1" 200 3196
+INFO 2025-08-16 14:52:45,511 basehttp 9168 28764 "GET /static/kline_output/%E8%81%AF%E7%99%BC%E7%A7%91_2454_kline.png HTTP/1.1" 200 50835
